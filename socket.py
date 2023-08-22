@@ -32,3 +32,4 @@ async def send_json_receive_response():
 
 # Run the function to send JSON, receive response, print it, and close the socket
 asyncio.get_event_loop().run_until_complete(send_json_receive_response())
+#sjlahdlasjk
