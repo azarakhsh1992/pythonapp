@@ -1,37 +1,34 @@
-import socket
+import asyncio
+import websockets
 import json
 
-# Define the target server and port
-server = 'example.com'
-port = 80
 
-# Create a socket object
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+async def send_json_receive_response():
+    # Define the target server and port
+    server = 'example.com'
+    port = 80
 
-# Connect to the server
-client_socket.connect((server, port))
+    # Create the JSON object
+    data = {
+        "key1": "value1",
+        "key2": "value2"
+    }
+    json_data = json.dumps(data)
 
-# Create the JSON object
-data = {
-    "key1": "value1",
-    "key2": "value2"
-}
-json_data = json.dumps(data)
+    # Connect to the server
+    async with websockets.connect(f"ws://{server}:{port}") as websocket:
+        # Send the JSON object
+        await websocket.send(json_data)
 
-# Send the POST request
-request = "POST /path/to/endpoint HTTP/1.1\r\nHost: {0}\r\nContent-Type: application/json\r\nContent-Length: {1}\r\n\r\n{2}".format(server, len(json_data), json_data)
-client_socket.sendall(request.encode())
+        # Receive the response
+        response = await websocket.recv()
 
-# Receive the response
-response = b""
-while True:
-    data = client_socket.recv(4096)
-    if not data:
-        break
-    response += data
+        # Print the response
+        print(response)
 
-# Print the response
-print(response.decode())
+    # Close the websocket connection
+    websocket.close()
 
-# Close the socket
-client_socket.close()
+
+# Run the function to send JSON, receive response, print it, and close the socket
+asyncio.get_event_loop().run_until_complete(send_json_receive_response())
