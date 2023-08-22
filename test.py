@@ -1,7 +1,6 @@
 import _sqlite3
 import requests
 import json
-import time
 
 def read_value():
     serial_1 = "/iolinkmaster/port[1]/iolinkdevice/serial"
@@ -26,6 +25,7 @@ def read_value():
                        serial_6,port_6, serial_7,port_7,serial_8,port_8]
                    }
                }
+    payload_write = { "code":"request", "cid":10, "adr":"iolinkmaster/port[3]/iolinkdevice/pdout/setdata", "data":{"newvalue":"00"} }
     headers = {}
     headers['Content-Type'] = 'application/json'
 
@@ -33,33 +33,37 @@ def read_value():
         response = requests.post(url='http://192.168.0.4', data=json.dumps(payload_read), headers=None)
         response.raise_for_status()  # Raise an exception for HTTP errors (4xx, 5xx)
         responses =response.json()
-        print(response)
-        print(responses)
-        pretty_json = json.dumps(responses, indent=4)
-        print(pretty_json)
+        # print(responses)
+        # print(response)
+        # pretty_json = json.dumps(responses, indent=4)
+        # print(pretty_json)
+        # print(type(pretty_json))
+
+        # response2 = requests.post(url='http://192.168.0.4', data=json.dumps(payload_write), headers=None)
+        # response2.raise_for_status()  # Raise an exception for HTTP errors (4xx, 5xx)
+        # responses2 =response2.json()
+        # print(responses2)
+        # print(response2)
+        # pretty_json2 = json.dumps(responses2, indent=4)
+        # print(pretty_json2)
+        # print(type(pretty_json2))
+        # return response2.json(),response.json()
         return response.json()
+
     except requests.exceptions.RequestException as e:
         raise e
 
 def write_value():
-        payload_write = { "code":"request", "cid":10, "adr":"iolinkmaster/port[3]/iolinkdevice/pdout/setdata", "data":{"newvalue":"01"} }
+        payload_write = { "code":"request", "cid":10, "adr":"iolinkmaster/port[3]/iolinkdevice/pdout/setdata", "data":{"newvalue":"00"} }
         response2 = requests.post(url='http://192.168.0.4', data=json.dumps(payload_write), headers=None)
         response2.raise_for_status()  # Raise an exception for HTTP errors (4xx, 5xx)
         responses2 =response2.json()
-        print(response2)
         print(responses2)
-        pretty_json2 = json.dumps(responses2, indent=4)
-        print(pretty_json2)
+        print(response2)
+        # pretty_json2 = json.dumps(responses2, indent=4)
+        # print(pretty_json2)
+        # print(type(pretty_json2))
         return response2.json()
-    
-def write_value2():
-    payload_write2 = { "code":"request", "cid":10, "adr":"iolinkmaster/port[3]/iolinkdevice/pdout/setdata", "data":{"newvalue":"00"} }
-    response3 = requests.post(url='http://192.168.0.4', data=json.dumps(payload_write2), headers=None)
-    response3.raise_for_status()  # Raise an exception for HTTP errors (4xx, 5xx)
-    responses3 =response3.json()
-    return response3.json()
-
 
 read_value()
-# time.sleep(1)
 # write_value()
