@@ -5,6 +5,7 @@ import time
 
 
 class Iolink():
+    url = 'http://192.168.0.4'
     serial_1 = "/iolinkmaster/port[1]/iolinkdevice/serial"
     serial_2 = "/iolinkmaster/port[2]/iolinkdevice/serial"
     serial_3 = "/iolinkmaster/port[3]/iolinkdevice/serial"
@@ -21,7 +22,13 @@ class Iolink():
     port_6 = "/iolinkmaster/port[6]/iolinkdevice/pdin/"
     port_7 = "/iolinkmaster/port[7]/iolinkdevice/pdin/"
     port_8 = "/iolinkmaster/port[8]/iolinkdevice/pdout/"
-
+    payload_read = {"code": "request", "cid": 4711, "adr": "/getdatamulti", \
+                        "data": {
+                            "datatosend": [serial_1, port_1, serial_2, port_2, serial_3, port_3, serial_4, port_4,serial_5, \
+                                port_5, serial_6, port_6, serial_7, port_7, serial_8,port_8]}}
+    payload_write = {"code": "request", "cid": 10, "adr": "iolinkmaster/port[3]/iolinkdevice/pdout/setdata", "data": {"newvalue": "01"}}
+    payload_write2 = {"code": "request", "cid": 10, "adr": "iolinkmaster/port[3]/iolinkdevice/pdout/setdata", "data": {"newvalue": "00"}}
+    
     def read_value(self):
 
         payload_read = {"code": "request", "cid": 4711, "adr": "/getdatamulti", \
@@ -68,6 +75,10 @@ class Iolink():
         responses3 = response3.json()
         return response3.json()
 
-myobj = Iolink.read_value()
+myobj = Iolink()
+myobj.read_value()
+# myobj.write_value()
+# myobj.write_value2()
+# myobj = Iolink.read_value()
 # time.sleep(1)
 # write_value()

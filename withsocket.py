@@ -1,18 +1,20 @@
 import asyncio
 import websockets
 import json
+import sys
+from containerprog import Iolink
 
-
+myobj = Iolink()
 async def send_json_receive_response():
     # Define the target server and port
-    server = 'example.com'
+    server = myobj.url
     port = 80
 
     # Create the JSON object
-    data = {
-        "key1": "value1",
-        "key2": "value2"
-    }
+    data = myobj.payload_read
+    data2= myobj.payload_write
+    data3 = myobj.payload_write2
+    
     json_data = json.dumps(data)
 
     # Connect to the server
