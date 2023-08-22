@@ -3,6 +3,8 @@ import requests
 import json
 import time
 
+from apscheduler.schedulers.background import BlockingScheduler, BackgroundScheduler
+
 
 class Iolink():
     url = 'http://192.168.0.4'
@@ -30,7 +32,7 @@ class Iolink():
     payload_write2 = {"code": "request", "cid": 10, "adr": "iolinkmaster/port[3]/iolinkdevice/pdout/setdata", "data": {"newvalue": "00"}}
     
     def read_value(self):
-
+        print("here u are at the beginning of the function")
         payload_read = {"code": "request", "cid": 4711, "adr": "/getdatamulti", \
                         "data": { \
                             "datatosend": [self.serial_1, self.port_1, self.serial_2, self.port_2, self.serial_3,
@@ -74,9 +76,17 @@ class Iolink():
         response3.raise_for_status()  # Raise an exception for HTTP errors (4xx, 5xx)
         responses3 = response3.json()
         return response3.json()
+    def scheduler1(self):
+        scheduler = BackgroundScheduler()
+        scheduler.add_job(self.read_value, 'interval', seconds =0.5)
+        scheduler.start()
 
 myobj = Iolink()
-myobj.read_value()
+# myobj.scheduler1()
+scheduler = BackgroundScheduler()
+scheduler.add_job(myobj.read_value, 'interval', seconds =0.5)
+scheduler.start()
+
 # myobj.write_value()
 # myobj.write_value2()
 # myobj = Iolink.read_value()
