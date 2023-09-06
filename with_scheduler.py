@@ -68,7 +68,7 @@ class Iolink():
 
     def write_value(self):
         payload_write = {"code": "request", "cid": 10, "adr": "iolinkmaster/port[3]/iolinkdevice/pdout/setdata",\
-                         "data": {"newvalue": "01"}}
+                        "data": {"newvalue": "01"}}
         response2 = requests.post(url='http://192.168.0.4', data=json.dumps(payload_write), headers=None)
         response2.raise_for_status()  # Raise an exception for HTTP errors (4xx, 5xx)
         responses2 = response2.json()
@@ -80,7 +80,7 @@ class Iolink():
 
     def write_value2(self):
         payload_write2 = {"code": "request", "cid": 10, "adr": "iolinkmaster/port[3]/iolinkdevice/pdout/setdata",\
-                          "data": {"newvalue": "00"}}
+                        "data": {"newvalue": "00"}}
         response3 = requests.post(url='http://192.168.0.4', data=json.dumps(payload_write2), headers=None)
         response3.raise_for_status()  # Raise an exception for HTTP errors (4xx, 5xx)
         responses3 = response3.json()
@@ -89,13 +89,42 @@ class Iolink():
         scheduler = BackgroundScheduler()
         scheduler.add_job(self.read_value, 'interval', seconds =0.5)
         scheduler.start()
-        
+
 myobj = Iolink()
-myobj.read_value()
-time.sleep(6)
+
+
+this_data = myobj.read_value()
+
+time.sleep(5)
 myobj.write_value()
-time.sleep(6)
+time.sleep(5)
+
 myobj.write_value2()
-time.sleep(6)
+time.sleep(5)
+
+
+
+
+
+# url = "http://127.0.0.1:8000/updatejson/"
+# headers = {}
+# headers['Content-Type'] = 'application/json'
+
+# try:
+#     response = requests.post(url=url, data=json.dumps(this_data), headers=headers)
+#     response.raise_for_status()  # Raise an exception for HTTP errors (4xx, 5xx)
+#     responses = response.json()
+#     print(response)
+#     print(response.json())
+
+# except requests.exceptions.RequestException as e:
+#     raise e
+
+# time.sleep(6)
+
+
+# time.sleep(6)
+
 # myobj = Iolink.read_value()
+
 # write_value()

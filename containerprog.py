@@ -61,7 +61,7 @@ class Iolink():
 
     def write_value(self):
         payload_write = {"code": "request", "cid": 10, "adr": "iolinkmaster/port[3]/iolinkdevice/pdout/setdata",\
-                         "data": {"newvalue": "01"}}
+                        "data": {"newvalue": "01"}}
         response2 = requests.post(url='http://192.168.0.4', data=json.dumps(payload_write), headers=None)
         response2.raise_for_status()  # Raise an exception for HTTP errors (4xx, 5xx)
         responses2 = response2.json()
@@ -73,7 +73,7 @@ class Iolink():
 
     def write_value2(self):
         payload_write2 = {"code": "request", "cid": 10, "adr": "iolinkmaster/port[3]/iolinkdevice/pdout/setdata",\
-                          "data": {"newvalue": "00"}}
+                        "data": {"newvalue": "00"}}
         response3 = requests.post(url='http://192.168.0.4', data=json.dumps(payload_write2), headers=None)
         response3.raise_for_status()  # Raise an exception for HTTP errors (4xx, 5xx)
         responses3 = response3.json()
