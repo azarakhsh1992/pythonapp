@@ -1,0 +1,7 @@
+{
+    "message_type": "event",
+    "PLC_name": "#Parameter",
+    "timestamp" : "#Parameter",
+    "button":"#Parameter",
+    "state": "#Parameter"
+}

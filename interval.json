@@ -1,0 +1,137 @@
+{
+    "message_type": "interval",
+    "PLC_name": "#Parameter",
+    "timestamp" : "#Parameter",
+    "temperature_sensor":{
+        "id1":
+        {"module":"#Parameter",
+        "temperature": "#Parameter",
+        "humidity":"#Parameter"
+        },
+        "id2":
+        {"module":"#Parameter",
+        "temperature": "#Parameter",
+        "humidity":"#Parameter"
+        },
+        "id3":
+        {"module":"#Parameter",
+        "temperature": "#Parameter",
+        "humidity":"#Parameter"
+        },
+        "id4":
+        {"module":"#Parameter",
+        "temperature": "#Parameter",
+        "humidity":"#Parameter"
+        },
+        "id5":
+        {"module":"#Parameter",
+        "temperature": "#Parameter",
+        "humidity":"#Parameter"
+        },
+        "id6":
+        {"module":"#Parameter",
+        "temperature": "#Parameter",
+        "humidity":"#Parameter"
+        },
+        "id7":
+        {"module":"#Parameter",
+        "temperature": "#Parameter",
+        "humidity":"#Parameter"
+        },
+        "id8":
+        {"module":"#Parameter",
+        "temperature": "#Parameter",
+        "humidity":"#Parameter"
+        }
+    },
+    "door_sensor":{
+        "id1":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        },
+        "id2":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        },
+        "id3":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        },
+        "id4":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        },
+        "id5":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        },
+        "id6":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        },
+        "id7":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        },
+        "id8":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        }
+    },
+    "lock_sensor":{
+        "id1":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        },
+        "id2":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        },
+        "id3":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        },
+        "id4":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        },
+        "id5":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        },
+        "id6":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        },
+        "id7":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        },
+        "id8":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        }
+    },
+    "cooling_sensor":{
+    "id1":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        },
+        "id2":{
+            "module":"#Parameter",
+            "value": "#Parameter"
+        }
+    },
+    "energy_sensor":{
+        "id1":{
+            "module":"#Parameter",
+            "power": "#Parameter",
+            "energy":"#Parameter"
+        },
+        "id2":{
+            "module":"#Parameter",
+            "power": "#Parameter",
+            "energy":"#Parameter"
+        }
+    }
+}
