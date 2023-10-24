@@ -297,6 +297,7 @@ def on_message(client, userdata, msg):
             print(f"Received message from {Topic57}: {msg.payload.decode()}")
     elif msg.topic == Topic58:
             print(f"Received message from {Topic58}: {msg.payload.decode()}")
+    
     elif msg.topic == Topic_LDH_edgeA1:
         topic_temp1 = msg.payload.decode()
         try:
