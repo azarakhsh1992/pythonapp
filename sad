@@ -1,406 +1,87 @@
-{attribute 'qualified_only'}
-VAR_GLOBAL
-	
-	PLC_name : STRING:='PLC1';
-	
-	CurrentDateTime 						:	TIME;
-	
-	broker:STRING(32):='192.168.1.1';
-	frequency1:TIME:=T#5S;
-	frequency2:TIME:=T#20S;
-	
-	
-	//Temperature Sensors
-	
-	LDH_edgeA1_sn							:STRING:='SN';
-	LDH_edgeA1_temperature					:STRING:='temp';
-	LDH_edgeA1_humidity						:STRING:='hum';
-	LDH_edgeA1_fault						:BOOL:=FALSE;
-	
-	LDH_edgeA2_sn							:STRING:='SN';
-	LDH_edgeA2_temperature					:STRING:='temp';
-	LDH_edgeA2_humidity						:STRING:='hum';
-	LDH_edgeA2_fault						:BOOL:=FALSE;
 
-	
-
-	LDH_edgeA3_sn							:STRING:='SN';
-	LDH_edgeA3_temperature					:STRING:='temp';
-	LDH_edgeA3_humidity						:STRING:='hum';
-	LDH_edgeA3_fault						:BOOL:=FALSE;
-	
-
-	LDH_edgeB1_sn							:STRING:='SN';
-	LDH_edgeB1_temperature					:STRING:='temp';
-	LDH_edgeB1_humidity						:STRING:='hum';
-	LDH_edgeB1_fault						:BOOL:=FALSE;
+module1:= GVL.LDH_edgeA1_sn;
+temperature1:= GVL.LDH_edgeA1_temperature;
+temperature1_min:= REAL_TO_STRING(IO_Link.LDH_edgeA1.minTemperature);
+temperature1_max:= REAL_TO_STRING(IO_link.LDH_edgeA1.maxTemperature);
+humidity1:=GVL.LDH_edgeA1_humidity;
+fault1:= BOOL_TO_STRING(GVL.LDH_edgeA1_fault);
 
 
-
-	LDH_edgeB2_sn							:STRING:='SN';
-	LDH_edgeB2_temperature					:STRING:='temp';
-	LDH_edgeB2_humidity						:STRING:='hum';
-	LDH_edgeB2_fault						:BOOL:=FALSE;
-
-
-
-	LDH_edgeB3_sn							:STRING:='SN';
-	LDH_edgeB3_temperature					:STRING:='temp';
-	LDH_edgeB3_humidity						:STRING:='hum';
-	LDH_edgeB3_fault						:BOOL:=FALSE;
+module2:= GVL.LDH_edgeA2_sn;
+temperature2:= GVL.LDH_edgeA2_temperature;
+temperature2_min:= REAL_TO_STRING(IO_Link.LDH_edgeA2.minTemperature);
+temperature2_max:= REAL_TO_STRING(IO_link.LDH_edgeA2.maxTemperature);
+humidity2:=GVL.LDH_edgeA2_humidity;
+fault2:= BOOL_TO_STRING(GVL.LDH_edgeA2_fault);
 
 
+module3:= GVL.LDH_edgeA3_sn;
+temperature3:= GVL.LDH_edgeA3_temperature;
+temperature3_min:= REAL_TO_STRING(IO_Link.LDH_edgeA3.minTemperature);
+temperature3_max:= REAL_TO_STRING(IO_link.LDH_edgeA3.maxTemperature);
+humidity3:=GVL.LDH_edgeA3_humidity;
+fault3:= BOOL_TO_STRING(GVL.LDH_edgeA3_fault);
 
-	LDH_network_sn							:STRING:='SN';
-	LDH_network_temperature					:STRING:='temp';
-	LDH_network_humidity						:STRING:='hum';
-	LDH_network_fault						:BOOL:=FALSE;
+module4:= GVL.LDH_edgeB1_sn;
+temperature4:= GVL.LDH_network_temperature;
+temperature4_min:= REAL_TO_STRING(IO_Link.LDH_edgeB1.minTemperature);
+temperature4_max:= REAL_TO_STRING(IO_link.LDH_edgeB1.maxTemperature);
+humidity4:=GVL.LDH_edgeB1_humidity;
+fault4:= BOOL_TO_STRING(GVL.LDH_edgeB1_fault);
+
+module5:= GVL.LDH_edgeB2_sn;
+temperature5_min:= REAL_TO_STRING(IO_Link.LDH_edgeB2.minTemperature);
+temperature5_max:= REAL_TO_STRING(IO_link.LDH_edgeB2.maxTemperature);
+temperature5:= GVL.LDH_edgeB2_temperature;
+humidity5:=GVL.LDH_edgeB2_humidity;
+fault5:= BOOL_TO_STRING(GVL.LDH_edgeB2_fault);
 
 
-	LDH_energy_sn							:STRING:='SN';
-	LDH_energy_temperature					:STRING:='temp';
-	LDH_energy_humidity						:STRING:='hum';
-	LDH_energy_fault						:BOOL:=FALSE;
-	
-	////////////////////////////////////////////////////////
-	
-	//Energy Sensors
-	
-	EM1_name							:STRING:='EM1';
-	EM1_power							:REAL;
-	EM1_energy							:REAL;
-	EM1_fault							:BOOL;
-	
-	EM2_name							:STRING:='EM2';
-	EM2_power							:REAL;
-	EM2_energy							:REAL;
-	EM2_fault							:BOOL:=FALSE;
-	
-//////////////////////////////////////
-	
-	//AC Sensors
-	AC_sensor1_name							:STRING:='AC_sensor1';
-	AC_sensor1_current 		
-	AC_sensor1_last 		
-	AC_sensor1_fault 						:	BOOL:=FALSE;
-	
-	AC_sensor2_name							:STRING:='AC_sensor2';
-	AC_sensor2_current 		
-	AC_sensor2_last 		
-	AC_sensor2_fault 						:	BOOL:=FALSE;
-	//////////////////////////////////////
+module6:= GVL.LDH_edgeB3_sn;
+temperature6_min:= REAL_TO_STRING(IO_Link.LDH_edgeB3.minTemperature);
+temperature6_max:= REAL_TO_STRING(IO_link.LDH_edgeB3.maxTemperature);
+temperature6:= GVL.LDH_edgeB3_temperature;
+humidity6:=GVL.LDH_edgeB3_humidity;
+fault6:= BOOL_TO_STRING(GVL.LDH_edgeB3_fault);
 
-	//Door Sensors	
-	door_sensor_edgeAF_name						:STRING:='door_sensor_edgeAF';
-	door_sensor_edgeAF_current
-	door_sensor_edgeAF_last	
-	door_sensor_edgeAF_fault				:	BOOL:=FALSE;
-	
-	door_sensor_edgeAB_name						:STRING:='door_sensor_edgeAB';
-	door_sensor_edgeAB_current
-	door_sensor_edgeAB_last	
-	door_sensor_edgeAB_fault				:	BOOL:=FALSE;
-	
-	door_sensor_edgeBF_name						:STRING:='door_sensor_edgeBF';
-	door_sensor_edgeBF_current
-	door_sensor_edgeBF_last	
-	door_sensor_edgeBF_fault				:	BOOL:=FALSE;
 
-	door_sensor_edgeBB_name						:STRING:='door_sensor_edgeBB';
-	door_sensor_edgeBB_current
-	door_sensor_edgeBB_last	
-	door_sensor_edgeBB_fault				:	BOOL:=FALSE;
+module7:= GVL.LDH_network_sn;
+temperature7:= GVL.LDH_network_temperature;
+temperature7_min:= REAL_TO_STRING(IO_Link.LDH_network.minTemperature);
+temperature7_max:= REAL_TO_STRING(IO_link.LDH_network.maxTemperature);
+humidity7:=GVL.LDH_network_humidity;
+fault7:= BOOL_TO_STRING(GVL.LDH_network_fault);
 
-	door_sensor_network_name						:STRING:='door_sensor_network
-	door_sensor_network_current
-	door_sensor_network_last
-	door_sensor_network_fault				:	BOOL:=FALSE;
-	
-	door_sensor_energy_name						:STRING:='door_sensor_energy
-	door_sensor_energy_current
-	door_sensor_energy_last	
-	door_sensor_energy_fault				:	BOOL:=FALSE;
+module8:= GVL.LDH_energy_sn;
+temperature8:= GVL.LDH_energy_temperature;
+temperature8_min:= REAL_TO_STRING(IO_Link.LDH_energy.minTemperature);
+temperature8_max:= REAL_TO_STRING(IO_link.LDH_energy.maxTemperature);
+humidity8:=GVL.LDH_energy_humidity;
+fault8:= BOOL_TO_STRING(GVL.LDH_energy_fault);
 
-	door_sensor_ACF_name						:STRING:='door_sensor_ACF	
-	door_sensor_ACF_current	
-	door_sensor_ACF_last	
-	door_sensor_ACF_fault					:	BOOL:=FALSE;
-	
-	door_sensor_ACB_name						:STRING:='door_sensor_ACB	
-	door_sensor_ACB_current	
-	door_sensor_ACB_last	
-	door_sensor_ACB_fault					:	BOOL:=FALSE;
-	///////////////////////////////////
-		
-	
-	
-	//Latch Sensors	
-	latch_sensor_edgeAF_name				latch_sensor_edgeAF	
-	latch_sensor_edgeAF_current
-	latch_sensor_edgeAF_last
-	latch_sensor_edgeAF_fault				:	BOOL:=FALSE;
 
-	latch_sensor_edgeAB_name				latch_sensor_edgeAB		
-	latch_sensor_edgeAB_current
-	latch_sensor_edgeAB_last
-	latch_sensor_edgeAB_fault				:	BOOL:=FALSE;
-	
-	latch_sensor_edgeBF_name				latch_sensor_edgeBF	
-	latch_sensor_edgeBF_current
-	latch_sensor_edgeBF_last
-	latch_sensor_edgeBF_fault				:	BOOL:=FALSE;
+topic1:= CONCAT(plc_name,module1);
+message1 := CONCAT('{T:', CONCAT(temperature1,CONCAT(',Tmin:', CONCAT(temperature1_min, CONCAT(',Tmax', CONCAT(temperature1_max, CONCAT(',RH:', CONCAT(humidity1, CONCAT(',F:', CONCAT(fault1, CONCAT(',', CONCAT(TIME_TO_STRING(gvl.CurrentDateTime),'}'))))))))))));
 
-	latch_sensor_edgeBB_name				latch_sensor_edgeBB	
-	latch_sensor_edgeBB_current
-	latch_sensor_edgeBB_last
-	latch_sensor_edgeBB_fault				:	BOOL:=FALSE;
-	
-	latch_sensor_network_name				latch_sensor_network	
-	latch_sensor_network_curren
-	latch_sensor_network_last
-	latch_sensor_network_fault				:	BOOL:=FALSE;
-	
-	latch_sensor_energy_name				latch_sensor_energy		
-	latch_sensor_energy_current
-	latch_sensor_energy_last
-	latch_sensor_energy_fault				:	BOOL:=FALSE;
-	
-	latch_sensor_ACF_name					latch_sensor_ACF		
-	latch_sensor_ACF_current
-	latch_sensor_ACF_last	
-	latch_sensor_ACF_fault					:	BOOL:=FALSE;
-	
-	latch_sensor_ACB_name					latch_sensor_ACB		
-	latch_sensor_ACB_current
-	latch_sensor_ACB_last	
-	latch_sensor_ACB_fault					:	BOOL:=FALSE;
-	
-	///////////////////////////////////
-	
-	//Latch Actuators
-	
-	latch_edgeAF_name				latch_edgeAF		
-	latch_edgeAF_curren
-	latch_edgeAF_last
-	latch_edgeAF_fault				:	BOOL:=FALSE;
-	
-	latch_edgeAB_name				latch_edgeAB		
-	latch_edgeAB_curren
-	latch_edgeAB_last
-	latch_edgeAB_fault				:	BOOL:=FALSE;
-	
-	latch_edgeBF_name				latch_edgeBF		
-	latch_edgeBF_curren
-	latch_edgeBF_last
-	latch_edgeBF_fault				:	BOOL:=FALSE;
+topic2:= module2;
+message2 := CONCAT('{T:', CONCAT(temperature2,CONCAT(',Tmin:', CONCAT(temperature2_min, CONCAT(',Tmax', CONCAT(temperature2_max, CONCAT(',RH:', CONCAT(humidity2, CONCAT(',F:', CONCAT(fault2, CONCAT(',', CONCAT(TIME_TO_STRING(gvl.CurrentDateTime),'}'))))))))))));
 
-	latch_edgeBB_name				latch_edgeBB	
-	latch_edgeBB_curren
-	latch_edgeBB_last
-	latch_edgeBB_fault				:	BOOL:=FALSE;
-	
-	latch_network_name				latch_network		
-	latch_network_curren
-	latch_network_last
-	latch_network_fault				:	BOOL:=FALSE;
-	
-	latch_energy_name				latch_energy		
-	latch_energy_curren
-	latch_energy_last
-	latch_energy_fault				:	BOOL:=FALSE;
-	
-	latch_ACF_name					latch_ACF		
-	latch_ACF_current
-	latch_ACF_last	
-	latch_ACF_fault					:	BOOL:=FALSE;
-	
-	latch_ACB_name					latch_ACB		
-	latch_ACB_current
-	latch_ACB_last	
-	latch_ACB_fault					:	BOOL:=FALSE;
-	
-	///////////////////////////////////////////////////
-	
-	//Signal LEDs
-	
-	//LEDs Edge A - Front
-	
-	LED_1_edgeAF_name
-	LED_1_edgeAF_curren
-	LED_1_edgeAF_last
-	LED_1_edgeAF_fault				:	BOOL:=FALSE;
-	
-	
-	LED_2_edgeAF_name				LED_2_edgeAF';
-	LED_2_edgeAF_curren
-	LED_2_edgeAF_last
-	LED_2_edgeAF_fault				:	BOOL:=FALSE;
-	
-	LED_3_edgeAF_name				LED_3_edgeAF';
-	LED_3_edgeAF_curren
-	LED_3_edgeAF_last
-	LED_3_edgeAF_fault				:	BOOL:=FALSE;
-	
-	LED_4_edgeAF_name				LED_4_edgeAF';
-	LED_4_edgeAF_curren
-	LED_4_edgeAF_last
-	LED_4_edgeAF_fault				:	BOOL:=FALSE;
-	
-	//LEDs Edge A - Back
-	
-	LED_1_edgeAB_name				LED_1_edgeAB		
-	LED_1_edgeAB_curren
-	LED_1_edgeAB_last
-	LED_1_edgeAB_fault				:	BOOL:=FALSE;
+topic3:= module3;
+message3 := CONCAT('{T:', CONCAT(temperature3,CONCAT(',Tmin:', CONCAT(temperature3_min, CONCAT(',Tmax', CONCAT(temperature3_max, CONCAT(',RH:', CONCAT(humidity3, CONCAT(',F:', CONCAT(fault3, CONCAT(',', CONCAT(TIME_TO_STRING(gvl.CurrentDateTime),'}'))))))))))));
 
-	LED_2_edgeAB_name				LED_2_edgeAB';
-	LED_2_edgeAB_curren
-	LED_2_edgeAB_last
-	LED_2_edgeAB_fault				:	BOOL:=FALSE;
-	
+topic4:= CONCAT(plc_name,module4);
+message4 := CONCAT('{T:', CONCAT(temperature4,CONCAT(',Tmin:', CONCAT(temperature4_min, CONCAT(',Tmax', CONCAT(temperature4_max, CONCAT(',RH:', CONCAT(humidity4, CONCAT(',F:', CONCAT(fault4, CONCAT(',', CONCAT(TIME_TO_STRING(gvl.CurrentDateTime),'}'))))))))))));
 
-	LED_3_edgeAB_name				LED_3_edgeAB';
-	LED_3_edgeAB_curren
-	LED_3_edgeAB_last
-	LED_3_edgeAB_fault				:	BOOL:=FALSE;
-	
 
-	LED_4_edgeAB_name				LED_4_edgeAB';
-	LED_4_edgeAB_curren
-	LED_4_edgeAB_last
-	LED_4_edgeAB_fault				:	BOOL:=FALSE;
-	
-	//LEDs Edge B - Front
-	LED_1_edgeBF_name				LED_1_edgeBF		
-	LED_1_edgeBF_curren
-	LED_1_edgeBF_last
-	LED_1_edgeBF_fault				:	BOOL:=FALSE;
+topic5:= CONCAT(plc_name,module5);
+message5 := CONCAT('{T:', CONCAT(temperature5,CONCAT(',Tmin:', CONCAT(temperature5_min, CONCAT(',Tmax', CONCAT(temperature5_max, CONCAT(',RH:', CONCAT(humidity5, CONCAT(',F:', CONCAT(fault5, CONCAT(',', CONCAT(TIME_TO_STRING(gvl.CurrentDateTime),'}'))))))))))));
 
-	LED_2_edgeBF_name				LED_2_edgeBF';
-	LED_2_edgeBF_curren
-	LED_2_edgeBF_last
-	LED_2_edgeBF_fault				:	BOOL:=FALSE;
+topic6:= CONCAT(plc_name,module6);
+message6 := CONCAT('{T:', CONCAT(temperature6,CONCAT(',Tmin:', CONCAT(temperature6_min, CONCAT(',Tmax', CONCAT(temperature6_max, CONCAT(',RH:', CONCAT(humidity6, CONCAT(',F:', CONCAT(fault6, CONCAT(',', CONCAT(TIME_TO_STRING(gvl.CurrentDateTime),'}'))))))))))));
 
-	LED_3_edgeBF_name				LED_3_edgeBF';
-	LED_3_edgeBF_curren
-	LED_3_edgeBF_last
-	LED_3_edgeBF_fault				:	BOOL:=FALSE;
+topic7:= CONCAT(plc_name,module7);
+message7 := CONCAT('{T:', CONCAT(temperature7,CONCAT(',Tmin:', CONCAT(temperature7_min, CONCAT(',Tmax', CONCAT(temperature7_max, CONCAT(',RH:', CONCAT(humidity7, CONCAT(',F:', CONCAT(fault7, CONCAT(',', CONCAT(TIME_TO_STRING(gvl.CurrentDateTime),'}'))))))))))));
 
-	LED_4_edgeBF_name				LED_4_edgeBF';
-	LED_4_edgeBF_curren
-	LED_4_edgeBF_last
-	LED_4_edgeBF_fault				:	BOOL:=FALSE;
+topic8:= CONCAT(plc_name,module8);
+message8 := CONCAT('{T:', CONCAT(temperature8,CONCAT(',Tmin:', CONCAT(temperature8_min, CONCAT(',Tmax', CONCAT(temperature8_max, CONCAT(',RH:', CONCAT(humidity8, CONCAT(',F:', CONCAT(fault8, CONCAT(',', CONCAT(TIME_TO_STRING(gvl.CurrentDateTime),'}'))))))))))));
 
-	//LEDs Edge B - Back
-	
-	LED_1_edgeBB_name				LED_1_edgeBB	
-	LED_1_edgeBB_curren
-	LED_1_edgeBB_last
-	LED_1_edgeBB_fault				:	BOOL:=FALSE;
-
-	LED_2_edgeBB_name				LED_2_edgeBB';
-	LED_2_edgeBB_curren
-	LED_2_edgeBB_last
-	LED_2_edgeBB_fault				:	BOOL:=FALSE;
-	
-	LED_3_edgeBB_name				LED_3_edgeBB';
-	LED_3_edgeBB_curren
-	LED_3_edgeBB_last
-	LED_3_edgeBB_fault				:	BOOL:=FALSE;
-	
-
-	LED_4_edgeBB_name				LED_4_edgeBB';
-	LED_4_edgeBB_curren
-	LED_4_edgeBB_last
-	LED_4_edgeBB_fault				:	BOOL:=FALSE;
-	
-	//LEDs Network Rack
-	LED_1_network_name				LED_1_network		
-	LED_1_network_curren
-	LED_1_network_last
-	LED_1_network_fault				:	BOOL:=FALSE;
-
-	LED_2_network_name				LED_2_network';
-	LED_2_network_curren
-	LED_2_network_last
-	LED_2_network_fault				:	BOOL:=FALSE;
-	
-	LED_3_network_name				LED_3_network';
-	LED_3_network_curren
-	LED_3_network_last
-	LED_3_network_fault				:	BOOL:=FALSE;
-	
-
-	LED_4_network_name				LED_4_network';
-	LED_4_network_curren
-	LED_4_network_last
-	LED_4_network_fault				:	BOOL:=FALSE;
-	
-	//LEDs Energy Rack
-	LED_1_energy_name				LED_1_energy';
-	LED_1_energy_curren
-	LED_1_energy_last
-	LED_1_energy_fault				:	BOOL:=FALSE;
-
-	LED_2_energy_name				LED_2_energy';
-	LED_2_energy_curren
-	LED_2_energy_last
-	LED_2_energy_fault				:	BOOL:=FALSE;
-	
-	LED_3_energy_name				LED_3_energy';
-	LED_3_energy_curren
-	LED_3_energy_last
-	LED_3_energy_fault				:	BOOL:=FALSE;
-	
-	LED_4_energy_name				LED_4_energy';
-	LED_4_energy_curren
-	LED_4_energy_last
-	LED_4_energy_fault				:	BOOL:=FALSE;
-	
-	
-	//LEDs Air Conditionner Rack-Front
-	LED_1_ACF_name					LED_1_ACF';
-	LED_1_ACF_current
-	LED_1_ACF_last	
-	LED_1_ACF_fault					:	BOOL:=FALSE;
-	
-	LED_2_ACF_name					LED_2_ACF';
-	LED_2_ACF_current
-	LED_2_ACF_last	
-	LED_2_ACF_fault					:	BOOL:=FALSE;
-	
-	LED_3_ACF_name
-	LED_3_ACF_current
-	LED_3_ACF_last	
-	LED_3_ACF_fault					:	BOOL:=FALSE;
-	
-	LED_4_ACF_name					LED_4_ACF';
-	LED_4_ACF_current
-	LED_4_ACF_last	
-	LED_4_ACF_fault					:	BOOL:=FALSE;
-	
-	//LEDs Air Conditionner Rack-Back
-	LED_1_ACB_name					LED_1_ACB';
-	LED_1_ACB_current
-	LED_1_ACB_last	
-	LED_1_ACB_fault					:	BOOL:=FALSE;
-
-	LED_2_ACB_name					LED_2_ACB';
-	LED_2_ACB_current
-	LED_2_ACB_last	
-	LED_2_ACB_fault					:	BOOL:=FALSE;
-
-	LED_3_ACB_name					LED_3_ACB';
-	LED_3_ACB_current
-	LED_3_ACB_last	
-	LED_3_ACB_fault					:	BOOL:=FALSE;
-
-	LED_4_ACB_name					LED_4_ACB';
-	LED_4_ACB_current
-	LED_4_ACB_last	
-	LED_4_ACB_fault					:	BOOL:=FALSE;
-
-	////////////////////////////////////////////////
-	
-
-END_VAR

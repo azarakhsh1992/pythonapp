@@ -1,0 +1,294 @@
+
+currentMsg:= TRIM(mqtt_publish_interval.FB_Subscribe.strResultAnswer);
+
+
+
+IF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_edgeAF_name,':TRUE')) THEN
+    GVL.latch_edgeAF_current:=TRUE;
+
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_edgeAF_name,':FALSE')) THEN
+    GVL.latch_edgeAF_current:=FALSE;
+    
+    ///
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_edgeAB_name,':TRUE')) THEN
+    GVL.latch_edgeAB_current:=TRUE;
+
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_edgeAB_name,':FALSE')) THEN
+    GVL.latch_edgeAB_current:=FALSE;
+
+    ///
+    
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_edgeBF_name,':TRUE')) THEN
+    gvl.latch_edgeBF_current:=TRUE;
+
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_edgeBF_name,':FALSE')) THEN
+    gvl.latch_edgeBF_current:=FALSE;
+
+    ///
+    
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_edgeBB_name,':TRUE')) THEN
+    gvl.latch_edgeBB_current:=TRUE;
+
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_edgeBB_name,':FALSE')) THEN
+    gvl.latch_edgeBB_current:=FALSE;
+
+///
+    
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_network_name,':TRUE')) THEN
+    gvl.latch_network_current:=TRUE;
+
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_network_name,':FALSE)')) THEN
+    gvl.latch_network_current:=FALSE;
+
+    ///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_energy_name,':TRUE')) THEN
+    gvl.latch_energy_current:=TRUE;
+
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_energy_name,':FALSE')) THEN
+    gvl.latch_energy_current:=FALSE;
+///
+
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_ACF_name,':TRUE')) THEN
+    gvl.latch_ACF_current:=TRUE;
+
+    
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_ACF_name,':FALSE')) THEN
+    gvl.latch_ACF_current:=FALSE;
+
+    ///
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_ACB_name,':TRUE')) THEN
+    gvl.latch_ACB_current:=TRUE;
+
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.latch_ACB_name,':FALSE')) THEN
+    gvl.latch_ACB_current:=FALSE;
+///
+
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_edgeAF_name,':TRUE')) THEN
+    gvl.LED_1_edgeAF_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_edgeAF_name,':FALSE')) THEN
+    gvl.LED_1_edgeAF_current:=FALSE;
+///
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_edgeAF_name,':TRUE')) THEN
+    gvl.LED_2_edgeAF_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_edgeAF_name,':FALSE')) THEN
+    gvl.LED_2_edgeAF_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_edgeAF_name,':TRUE')) THEN
+    gvl.LED_3_edgeAF_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_edgeAF_name,':FALSE')) THEN
+    gvl.LED_3_edgeAF_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_edgeAF_name,':TRUE')) THEN
+    gvl.LED_4_edgeAF_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_edgeAF_name,':FALSE')) THEN
+    gvl.LED_4_edgeAF_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_edgeBF_name,':TRUE')) THEN
+    gvl.LED_1_edgeBF_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_edgeBF_name,':FALSE')) THEN
+    gvl.LED_1_edgeBF_current:=FALSE;
+///
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_edgeBF_name,':TRUE')) THEN
+    gvl.LED_2_edgeBF_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_edgeBF_name,':FALSE')) THEN
+    gvl.LED_2_edgeBF_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_edgeBF_name,':TRUE')) THEN
+    gvl.LED_3_edgeBF_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_edgeBF_name,':FALSE')) THEN
+    gvl.LED_3_edgeBF_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_edgeBF_name,':TRUE')) THEN
+    gvl.LED_4_edgeBF_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_edgeBF_name,':FALSE')) THEN
+    gvl.LED_4_edgeBF_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_edgeAB_name,':TRUE')) THEN
+    gvl.LED_1_edgeAB_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_edgeAB_name,':FALSE')) THEN
+    gvl.LED_1_edgeAB_current:=FALSE;
+///
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_edgeAB_name,':TRUE')) THEN
+    gvl.LED_2_edgeAB_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_edgeAB_name,':FALSE')) THEN
+    gvl.LED_2_edgeAB_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_edgeAB_name,':TRUE')) THEN
+    gvl.LED_3_edgeAB_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_edgeAB_name,':FALSE')) THEN
+    gvl.LED_3_edgeAB_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_edgeAB_name,':TRUE')) THEN
+    gvl.LED_4_edgeAB_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_edgeAB_name,':FALSE')) THEN
+    gvl.LED_4_edgeAB_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_edgeBB_name,':TRUE')) THEN
+    gvl.LED_1_edgeBB_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_edgeBB_name,':FALSE')) THEN
+    gvl.LED_1_edgeBB_current:=FALSE;
+///
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_edgeBB_name,':TRUE')) THEN
+    gvl.LED_2_edgeBB_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_edgeBB_name,':FALSE')) THEN
+    gvl.LED_2_edgeBB_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_edgeBB_name,':TRUE')) THEN
+    gvl.LED_3_edgeBB_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_edgeBB_name,':FALSE')) THEN
+    gvl.LED_3_edgeBB_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_edgeBB_name,':TRUE')) THEN
+    gvl.LED_4_edgeBB_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_edgeBB_name,':FALSE')) THEN
+    gvl.LED_4_edgeBB_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_network_name,':TRUE')) THEN
+    gvl.LED_1_network_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_network_name,':FALSE)')) THEN
+    gvl.LED_1_network_current:=FALSE;
+///
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_network_name,':TRUE')) THEN
+    gvl.LED_2_network_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_network_name,':FALSE)')) THEN
+    gvl.LED_2_network_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_network_name,':TRUE')) THEN
+    gvl.LED_3_network_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_network_name,':FALSE)')) THEN
+    gvl.LED_3_network_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_network_name,':TRUE')) THEN
+    gvl.LED_4_network_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_network_name,':FALSE)')) THEN
+    gvl.LED_4_network_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_energy_name,':TRUE')) THEN
+    gvl.LED_1_energy_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_energy_name,':FALSE')) THEN
+    gvl.LED_1_energy_current:=FALSE;
+///
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_energy_name,':TRUE')) THEN
+    gvl.LED_2_energy_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_energy_name,':FALSE')) THEN
+    gvl.LED_2_energy_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_energy_name,':TRUE')) THEN
+    gvl.LED_3_energy_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_energy_name,':FALSE')) THEN
+    gvl.LED_3_energy_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_energy_name,':TRUE')) THEN
+    gvl.LED_4_energy_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_energy_name,':FALSE')) THEN
+    gvl.LED_4_energy_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_ACF_name,':TRUE')) THEN
+    gvl.LED_1_ACF_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_ACF_name,':FALSE')) THEN
+    gvl.LED_1_ACF_current:=FALSE;
+///
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_ACF_name,':TRUE')) THEN
+    gvl.LED_2_ACF_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_ACF_name,':FALSE')) THEN
+    gvl.LED_2_ACF_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_ACF_name,':TRUE')) THEN
+    gvl.LED_3_ACF_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_ACF_name,':FALSE')) THEN
+    gvl.LED_3_ACF_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_ACF_name,':TRUE')) THEN
+    gvl.LED_4_ACF_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_ACF_name,':FALSE')) THEN
+    gvl.LED_4_ACF_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_ACB_name,':TRUE')) THEN
+    gvl.LED_1_ACB_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_1_ACB_name,':FALSE')) THEN
+    gvl.LED_1_ACB_current:=FALSE;
+///
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_ACB_name,':TRUE')) THEN
+    gvl.LED_2_ACB_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_2_ACB_name,':FALSE')) THEN
+    gvl.LED_2_ACB_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_ACB_name,':TRUE')) THEN
+    gvl.LED_3_ACB_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_3_ACB_name,':FALSE')) THEN
+    gvl.LED_3_ACB_current:=FALSE;
+///
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_ACB_name,':TRUE')) THEN
+    gvl.LED_4_ACB_current:=TRUE;
+
+ELSIF currentMsg = CONCAT(GVL.PLC_name,CONCAT(gvl.LED_4_ACB_name,':FALSE')) THEN
+    gvl.LED_4_ACB_current:=FALSE;
+///
+
+END_IF
+

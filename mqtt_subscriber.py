@@ -2,14 +2,34 @@
 import paho.mqtt.client as mqtt
 import time
 import datetime
+from apscheduler.schedulers.background import BlockingScheduler, BackgroundScheduler
 
 previous_time1 = None  # Initialize previous_time variable
 previous_time2 = None  # Initialize previous_time variable
 
 
+def interlock_msg(module_topic):
+    this_topic = PLC_name
+    this_message = module_topic+':FALSE'
+    broker='192.168.1.1'
+    client = mqtt.Client()
+    client.connect(broker,port=1883)
+    client.publish(this_topic, this_message)
+    client.loop_start()
+    client.disconnect()
+    time.sleep(5)
+    this_message ='PLC1latch_ACF:FALSE'
+    broker='192.168.1.1'
+    client = mqtt.Client()
+    client.connect(broker,port=1883)
+    client.publish(this_topic, this_message)
+    client.loop_start()
+    client.disconnect()
+    
+    
 PLC_name = "PLC1"
 
-
+#######################intervally#########################
 Topic_LDH_edgeA1=PLC_name+"LDH_edgeA1"
 Topic_LDH_edgeA2=PLC_name+"LDH_edgeA2"
 Topic_LDH_edgeA3=PLC_name+"LDH_edgeA3"
@@ -18,6 +38,7 @@ Topic_LDH_edgeB2=PLC_name+"LDH_edgeB2"
 Topic_LDH_edgeB3=PLC_name+"LDH_edgeB3"
 Topic_LDH_network=PLC_name+"LDH_network"
 Topic_LDH_energy=PLC_name+"LDH_energy"
+################################################################
 
 Topic_EM1=PLC_name+"EM1"
 Topic_EM2=PLC_name+"EM2"
@@ -53,6 +74,7 @@ Topic_latch_network=PLC_name+"latch_network"
 Topic_latch_energy=PLC_name+"latch_energy"
 Topic_latch_ACF=PLC_name+"latch_ACF"
 Topic_latch_ACB=PLC_name+"latch_ACB"
+
 
 Topic_LED_1_edgeAF=PLC_name+"LED_1_edgeAF"
 Topic_LED_2_edgeAF=PLC_name+"LED_2_edgeAF"

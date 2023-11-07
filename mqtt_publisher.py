@@ -4,18 +4,22 @@ import time
 from apscheduler.schedulers.background import BlockingScheduler, BackgroundScheduler
 
 
+def publish_msg():
+    this_topic ='PLC1'
+    this_message ='PLC1latch_ACF:TRUE'
+    broker='192.168.1.1'
+    client = mqtt.Client()
+    client.connect(broker,port=1883)
+    client.publish(this_topic, this_message)
+    client.loop_start()
+    client.disconnect()
+    time.sleep(3)
+    this_message ='PLC1latch_ACF:FALSE'
+    broker='192.168.1.1'
+    client = mqtt.Client()
+    client.connect(broker,port=1883)
+    client.publish(this_topic, this_message)
+    client.loop_start()
+    client.disconnect()
 
-def on_connect(client, userdata, flags, rc, this_topic, this_payload):
-    print(f"Connected with result code {rc}")
-    client.publish(topic =this_topic, payload = this_payload, qos = 0, retain = True)
-
-def on_message(client, userdata, msg):
-    print(f"Received message: {msg.payload.decode()}")
-
-client = mqtt.Client()
-
-client.on_connect = on_connect
-client.on_message = on_message
-client.connect("192.168.1.1", 1883, 60)
-client.loop_forever()
-
+publish_msg()
