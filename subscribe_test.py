@@ -5,6 +5,7 @@ import datetime
 import threading
 import json
 import requests
+from functions import json_convert_dido
 
 previous_time1 = None  # Initialize previous_time variable
 previous_time2 = None  # Initialize previous_time variable
@@ -14,10 +15,10 @@ PLC_name = "PLC1"
 broker = '192.168.1.1'
 url='http://127.0.0.1:8000/temp_sensors_msg/'
 
-def delayed_publish(client, module_topic):
+def delayed_publish(client, module_profinet_name):
         time.sleep(3)
         this_topic = PLC_name
-        this_message = module_topic+':FALSE'
+        this_message = module_profinet_name+':FALSE'
         client.publish(this_topic, this_message)
 
 def send_to_django_server(payload):
@@ -116,81 +117,81 @@ Topic57=PLC_name+"AC_sensor1"
 Topic58=PLC_name+"AC_sensor2"
 
 def on_connect(client, userdata, flags, rc):
-        print(f"Connected with result code {rc}")
-        # Subscribe to multiple Topics
+    print(f"Connected with result code {rc}")
+    # Subscribe to multiple Topics
 
-        client.subscribe(Topic_LDH_edgeA1)
-        client.subscribe(Topic_LDH_edgeA2)
-        client.subscribe(Topic_LDH_edgeA3)
-        client.subscribe(Topic_LDH_edgeB1)
-        client.subscribe(Topic_LDH_edgeB2)
-        client.subscribe(Topic_LDH_edgeB3)
-        client.subscribe(Topic_LDH_network)
-        client.subscribe(Topic_LDH_energy)
-        
-        
-        client.subscribe(Topic_EM1)
-        client.subscribe(Topic_EM2)
-        
-        
-        client.subscribe(Topic1)
-        client.subscribe(Topic2)
-        client.subscribe(Topic3)
-        client.subscribe(Topic4)
-        client.subscribe(Topic5)
-        client.subscribe(Topic6)
-        client.subscribe(Topic7)
-        client.subscribe(Topic8)
-        client.subscribe(Topic9)
-        client.subscribe(Topic10)
-        client.subscribe(Topic11)
-        client.subscribe(Topic12)
-        client.subscribe(Topic13)
-        client.subscribe(Topic14)
-        client.subscribe(Topic15)
-        client.subscribe(Topic16)
-        client.subscribe(Topic17)
-        client.subscribe(Topic18)
-        client.subscribe(Topic19)
-        client.subscribe(Topic20)
-        client.subscribe(Topic21)
-        client.subscribe(Topic22)
-        client.subscribe(Topic23)
-        client.subscribe(Topic24)
-        client.subscribe(Topic25)
-        client.subscribe(Topic26)
-        client.subscribe(Topic27)
-        client.subscribe(Topic28)
-        client.subscribe(Topic29)
-        client.subscribe(Topic30)
-        client.subscribe(Topic31)
-        client.subscribe(Topic32)
-        client.subscribe(Topic33)
-        client.subscribe(Topic34)
-        client.subscribe(Topic35)
-        client.subscribe(Topic36)
-        client.subscribe(Topic37)
-        client.subscribe(Topic38)
-        client.subscribe(Topic39)
-        client.subscribe(Topic40)
-        client.subscribe(Topic41)
-        client.subscribe(Topic42)
-        client.subscribe(Topic43)
-        client.subscribe(Topic44)
-        client.subscribe(Topic45)
-        client.subscribe(Topic46)
-        client.subscribe(Topic47)
-        client.subscribe(Topic48)
-        client.subscribe(Topic49)
-        client.subscribe(Topic50)
-        client.subscribe(Topic51)
-        client.subscribe(Topic52)
-        client.subscribe(Topic53)
-        client.subscribe(Topic54)
-        client.subscribe(Topic55)
-        client.subscribe(Topic56)
-        client.subscribe(Topic57)
-        client.subscribe(Topic58)
+    client.subscribe(Topic_LDH_edgeA1)
+    client.subscribe(Topic_LDH_edgeA2)
+    client.subscribe(Topic_LDH_edgeA3)
+    client.subscribe(Topic_LDH_edgeB1)
+    client.subscribe(Topic_LDH_edgeB2)
+    client.subscribe(Topic_LDH_edgeB3)
+    client.subscribe(Topic_LDH_network)
+    client.subscribe(Topic_LDH_energy)
+    
+    
+    client.subscribe(Topic_EM1)
+    client.subscribe(Topic_EM2)
+    
+    
+    client.subscribe(Topic1)
+    client.subscribe(Topic2)
+    client.subscribe(Topic3)
+    client.subscribe(Topic4)
+    client.subscribe(Topic5)
+    client.subscribe(Topic6)
+    client.subscribe(Topic7)
+    client.subscribe(Topic8)
+    client.subscribe(Topic9)
+    client.subscribe(Topic10)
+    client.subscribe(Topic11)
+    client.subscribe(Topic12)
+    client.subscribe(Topic13)
+    client.subscribe(Topic14)
+    client.subscribe(Topic15)
+    client.subscribe(Topic16)
+    client.subscribe(Topic17)
+    client.subscribe(Topic18)
+    client.subscribe(Topic19)
+    client.subscribe(Topic20)
+    client.subscribe(Topic21)
+    client.subscribe(Topic22)
+    client.subscribe(Topic23)
+    client.subscribe(Topic24)
+    client.subscribe(Topic25)
+    client.subscribe(Topic26)
+    client.subscribe(Topic27)
+    client.subscribe(Topic28)
+    client.subscribe(Topic29)
+    client.subscribe(Topic30)
+    client.subscribe(Topic31)
+    client.subscribe(Topic32)
+    client.subscribe(Topic33)
+    client.subscribe(Topic34)
+    client.subscribe(Topic35)
+    client.subscribe(Topic36)
+    client.subscribe(Topic37)
+    client.subscribe(Topic38)
+    client.subscribe(Topic39)
+    client.subscribe(Topic40)
+    client.subscribe(Topic41)
+    client.subscribe(Topic42)
+    client.subscribe(Topic43)
+    client.subscribe(Topic44)
+    client.subscribe(Topic45)
+    client.subscribe(Topic46)
+    client.subscribe(Topic47)
+    client.subscribe(Topic48)
+    client.subscribe(Topic49)
+    client.subscribe(Topic50)
+    client.subscribe(Topic51)
+    client.subscribe(Topic52)
+    client.subscribe(Topic53)
+    client.subscribe(Topic54)
+    client.subscribe(Topic55)
+    client.subscribe(Topic56)
+    client.subscribe(Topic57)
+    client.subscribe(Topic58)
         
 def on_message(client, userdata, msg):
 
@@ -281,13 +282,8 @@ def on_message(client, userdata, msg):
                 except json.JSONDecodeError:
                         print("Error decoding payload")
         elif msg.topic == Topic20:
-                print(f"Received message from {Topic20}: {msg.payload.decode()}")
-                try:
-                        payload_dict = json.loads(formatted_payload)
-                        if payload_dict.get('value')== 'TRUE':
-                            threading.Thread(target=delayed_publish, args=(client,Topic20)).start()
-                except json.JSONDecodeError:
-                        print("Error decoding payload")
+            json_convert_dido(msg)
+            
         elif msg.topic == Topic21:
                 print(f"Received message from {Topic21}: {msg.payload.decode()}")
                 try:
@@ -306,10 +302,19 @@ def on_message(client, userdata, msg):
                         print("Error decoding payload")
 
         elif msg.topic == Topic23:
+            profinet_name=msg.topic
             try:
                 payload_dict = json.loads(formatted_payload)
-                print(f"Received message from {Topic23}: {payload_dict}")
+                payload_dict =\
+                {
+                    'profinet_name':profinet_name,
+                    'params':payload_dict
+                }
+
+                print(payload_dict)
+                print("type payload_dict: ",type(payload_dict))
                 if payload_dict.get('value') =='TRUE':  # Assuming the value is a boolean True
+                    print(payload_dict)
                     threading.Thread(target=delayed_publish, args=(client, Topic23)).start()
                     send_to_django_server(payload_dict)  # Call the function to send data to Django
             except json.JSONDecodeError:

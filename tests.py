@@ -6,7 +6,7 @@ import threading
 import json
 import requests
 import re
-
+from functions import *
 
 
 def is_float(value):
@@ -66,23 +66,6 @@ PLC_name = "PLC1"
 broker = '192.168.1.1'
 url='http://127.0.0.1:8000/temp_sensors_msg/'
 
-def delayed_publish(client, module_topic):
-        time.sleep(3)
-        this_topic = PLC_name
-        this_message = module_topic+':close'
-        client.publish(this_topic, this_message)
-
-def send_to_django_server(payload):
-    # Define the URL of your Django server endpoint
-    url = 'http://127.0.0.1:8000/temp_sensors_msg/'
-    try:
-        response = requests.post(url, json=payload)
-        response.raise_for_status()
-        # Handle successful request
-        print(f"Data sent to Django server with status code: {response.status_code}")
-    except requests.exceptions.RequestException as e:
-        # Handle exceptions for the HTTP request here
-        print(f"Failed to send data to Django server: {e}")
 
 
 Topic23=PLC_name+"latch_ACF"
