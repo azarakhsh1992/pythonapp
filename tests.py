@@ -110,3 +110,32 @@ client.on_message = on_message
 
 client.connect("192.168.1.1", 1883, 60)
 client.loop_forever()
+
+
+"T;25.5;Tmin;15;Tmax;30.644;RH;37;F;FALSE;Time;10y2d20h10s25ms"
+
+
+
+    # if msg.topic == Topic1:
+    #     payload=json_convert_dido(msg)
+    #     if payload !="F":
+    #         if payload.get('value') == "open":  # Assuming the value is a boolean True
+    #             delayed_publish(client,Topic1)
+    #         threading.Thread(target=send_to_django_server, args=(payload,)).start()
+    #     else:
+    #         print("fault")
+    #         pass
+
+
+
+
+    # elif msg.topic == Topic2:
+    #     payload=json_convert_dido(msg)
+    #     if payload !="F":
+    #         if payload.get('value') == "open":  # Assuming the value is a boolean True
+    #             threading.Thread(target=delayed_publish, args=(client, Topic2)).start()
+    #         threading.Thread(target=send_to_django_server, args=(payload,)).start()
+    #     else:
+    #         print("fault")
+    #         pass
+
