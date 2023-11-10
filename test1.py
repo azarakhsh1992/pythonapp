@@ -33,39 +33,54 @@ def send_to_django_server(payload):
     else:
         pass
 #################################################################################
+# received string from PLC: "T;25;Tmin;15.5;Tmax;32.4;RH;56.5;F;FALSE;Time;65468451sacc"
 def json_convert_temp(msg):
     try:
         mstr=msg.payload.decode().replace('TRUE',"True").replace('FALSE',"False").split(";")
-        try:
-            payload = {"profinet_name":msg.topic,"T": float(mstr[1]),"Tmin": float(mstr[3]),"Tmax": float(mstr[5]),"RH": float(mstr[7]),"F": mstr[9],"Time": mstr[11]},
-            print(payload)
-            return payload
-        except IndexError:
+        if len(mstr) == 12:
+            try:
+                payload = {"profinet_name":msg.topic,"T": float(mstr[1]),"Tmin": float(mstr[3]),"Tmax": float(mstr[5]),"RH": float(mstr[7]),"F": mstr[9],"Time": mstr[11]},
+                print(payload)
+                return payload
+            except :
+                return "F"
+        else:
+            print("length of string does not match")
             return "F"
-    except json.JSONDecodeError:
+    except json.JSONDecodeError or TypeError or IndexError or ValueError or KeyError or TabError or OverflowError or SyntaxError:
         return "F"
 #################################################################################
+# received string from PLC: "value;open;F;FALSE"
 def json_convert_dido(msg):
     try:
         mstr=msg.payload.decode().replace('TRUE',"True").replace('FALSE',"False").split(";")
-        try:
-            payload = {"profinet_name":msg.topic,"value": mstr[1], "F": mstr[3]}
-            print(payload)
-            return payload
-        except IndexError:
+        if len(mstr) == 4:
+            try:
+                payload = {"profinet_name":msg.topic,"value": mstr[1], "F": mstr[3]}
+                print(payload)
+                return payload
+            except :
+                return "F"
+        else:
+            print("length of string does not match")
             return "F"
     except json.JSONDecodeError:
         return "F"
 
 #################################################################################
+# received string from PLC:   "E;value;UnitE;value;P;value;UnitP;value;F;value;time;value"
 def json_convert_energy(msg):
     try:
         mstr=msg.payload.decode().replace('TRUE','"True"').replace('FALSE',"False").split(";")
-        try:
-            payload = {"profinet_name":msg.topic,"E": float(mstr[1]),"UnitE": mstr[3],"P": float(mstr[5]),"UnitP": mstr[7],"F": mstr[9],"Time": mstr[11]},
-            print(payload)
-            return payload
-        except IndexError:
+        if len(mstr) == 12:
+            try:
+                payload = {"profinet_name":msg.topic,"E": float(mstr[1]),"UnitE": mstr[3],"P": float(mstr[5]),"UnitP": mstr[7],"F": mstr[9],"Time": mstr[11]},
+                print(payload)
+                return payload
+            except :
+                return "F"
+        else:
+            print("length of string does not match")
             return "F"
     except json.JSONDecodeError:
         return "F"
