@@ -9,7 +9,7 @@ import os
 import certifi
 
 # PLC_name = "KAAASDASASDVDASDASACAD"
-PLC_name = "CABA01XFST01F01---KFU1"
+PLC_name = "KAAASDASASDVDASDASACAD"
 pre_profinet_name = PLC_name[:-7]
 broker = '192.168.137.1'
 django_url = 'https://localhost:5000/web/mqttmiddleware/'
@@ -161,90 +161,88 @@ def mqtt_client_thread(topic):
     client.loop_forever()  # Starts network loop
 
 
-#################################### Temperature sensor topics #############################################
-Topic_LDH_edgeA1=pre_profinet_name+ "---BT01"
-Topic_LDH_edgeA2=pre_profinet_name+ "---BT02"
-Topic_LDH_edgeA3=pre_profinet_name+ "---BT03"
-Topic_LDH_edgeB1=pre_profinet_name+ "---BT04"
-Topic_LDH_edgeB2=pre_profinet_name+ "---BT05"
-Topic_LDH_edgeB3=pre_profinet_name+ "---BT06"
-Topic_LDH_network=pre_profinet_name+"---BT07"
-Topic_LDH_energy=pre_profinet_name+ "---BT08"
-################################### Energy sensor Topics #################################
+#################################################################################
+Topic_LDH_edgeA1=pre_profinet_name+'SSDSDVA'
+Topic_LDH_edgeA2=pre_profinet_name+"LDH_edgeA2"
+Topic_LDH_edgeA3=pre_profinet_name+"AFREWFF"
+Topic_LDH_edgeB1=pre_profinet_name+"LDH_edgeB1"
+Topic_LDH_edgeB2=pre_profinet_name+"LDH_edgeB2"
+Topic_LDH_edgeB3=pre_profinet_name+"LDH_edgeB3"
+Topic_LDH_network=pre_profinet_name+"LDH_network"
+Topic_LDH_energy="LDH_network"
 
-Topic_EM1=pre_profinet_name+"---PG01"
-Topic_EM2=pre_profinet_name+"---PG02"
-
-################################### Door sensor Topics #################################
-
-Topic_door_sensor_edge_AF=pre_profinet_name+"---BGE1"
-Topic_door_sensor_edge_AB=pre_profinet_name+"---BGE2"
-Topic_door_sensor_edge_BF=pre_profinet_name+"---BGE3"
-Topic_door_sensor_edge_BB=pre_profinet_name+"---BGE4"
-Topic_door_sensor_network=pre_profinet_name+"---BGE5"
-Topic_door_sensor_energy=pre_profinet_name+"---BGE6"
-Topic_door_sensor_ACF=pre_profinet_name+"---BGE7"
-Topic_door_sensor_ACB=pre_profinet_name+"---BGE8"
-################################### Door Button Topics #################################
-Topic_door_button_edge_AF=pre_profinet_name+"---SF01"
-Topic_door_button_edge_AB=pre_profinet_name+"---SF02"
-Topic_door_button_edge_BF=pre_profinet_name+"---SF03"
-Topic_door_button_edge_BB=pre_profinet_name+"---SF04"
-Topic_door_button_network=pre_profinet_name+"---SF05"
-Topic_door_button_energy=pre_profinet_name+"---SF06"
-Topic_door_button_ACF=pre_profinet_name+"---SF07"
-Topic_door_button_ACB=pre_profinet_name+"---SF08"
-################################### Latch sensor topics #################################
-Topic_latch_sensor_edge_AF=pre_profinet_name+"---BGT1"	
-Topic_latch_sensor_edge_AB=pre_profinet_name+"---BGT2"	
-Topic_latch_sensor_edge_BF=pre_profinet_name+"---BGT3"	
-Topic_latch_sensor_edge_BB=pre_profinet_name+"---BGT4"	
-Topic_latch_sensor_network=pre_profinet_name+"---BGT5"	
-Topic_latch_sensor_energy=pre_profinet_name+"---BGT6"	
-Topic_latch_sensor_ACF=pre_profinet_name+"---BGT7"
-Topic_latch_sensor_ACB=pre_profinet_name+"---BGT8"	
-###################################### Latch topics###################
-Topic_latch_edge_AF=pre_profinet_name+"---MB01"
-Topic_latch_edge_AB=pre_profinet_name+"---MB02"
-Topic_latch_edge_BF=pre_profinet_name+"---MB03"
-Topic_latch_edge_BB=pre_profinet_name+"---MB04"
-Topic_latch_network=pre_profinet_name+"---MB05"
-Topic_latch_energy=pre_profinet_name+"---MB06"
-Topic_latch_ACF=pre_profinet_name+"---MB07"
-Topic_latch_ACB=pre_profinet_name+"---MB08"
-####################################### LED topics ##################
-Topic_LED_edge_AF=pre_profinet_name+"---PF01"
-Topic_LED_edge_AB=pre_profinet_name+"---PF02"
-Topic_LED_edge_BF=pre_profinet_name+"---PF03"
-Topic_LED_edge_BB=pre_profinet_name+"---PF04"
-Topic_LED_network=pre_profinet_name+"---PF05"
-Topic_LED_energy=pre_profinet_name+"---PF06"
-Topic_LED_ACF=pre_profinet_name+"---PF07"
-Topic_LED_ACB=pre_profinet_name+"---PF08"
-
-################################ Cooling alarm sensors #################
-Topic_ACM1=pre_profinet_name+"---BG01"
-Topic_ACM2=pre_profinet_name+"---BG02"
+Topic_EM1=pre_profinet_name+"SVDFSVF"
+Topic_EM2=pre_profinet_name+"GXBXGFN"
 
 
+Topic_door_sensor_edge_AF=pre_profinet_name+"1111111"
+Topic_door_sensor_edge_AB=pre_profinet_name+"SFAFAAS"
+Topic_door_sensor_edge_BF=pre_profinet_name+"VDASVSV"
+Topic_door_sensor_edge_BB=pre_profinet_name+"SVVSDVS"
+Topic_door_sensor_network=pre_profinet_name+"SHTETAG"
+Topic_door_sensor_energy=pre_profinet_name+"STHSTHR"
+Topic_door_sensor_ACF=pre_profinet_name+"DFDDFDF"
+Topic_door_sensor_ACB=pre_profinet_name+"door_sensor_ACB"
+
+Topic_latch_sensor_edge_AF=pre_profinet_name+"latch_sensor_edgeAF"	
+Topic_latch_sensor_edge_AB=pre_profinet_name+"latch_sensor_edgeAB"	
+Topic_latch_sensor_edge_BF=pre_profinet_name+"latch_sensor_edgeBF"	
+Topic_latch_sensor_edge_BB=pre_profinet_name+"latch_sensor_edgeBB"	
+Topic_latch_sensor_network=pre_profinet_name+"latch_sensor_network"	
+Topic_latch_sensor_energy=pre_profinet_name+"latch_sensor_energy"	
+Topic_latch_sensor_ACF=pre_profinet_name+"latch_sensor_ACF"	
+Topic_latch_sensor_ACB=pre_profinet_name+"latch_sensor_ACB"	
+######################################Latch topics###################
+Topic_latch_edge_AF=pre_profinet_name+"latch_edge_AF"
+Topic_latch_edge_AB=pre_profinet_name+"latch_edge_AB"
+Topic_latch_edge_BF=pre_profinet_name+"latch_edge_BF"
+Topic_latch_edge_BB=pre_profinet_name+"latch_edge_BB"
+Topic_latch_network=pre_profinet_name+"latch_network"
+Topic_latch_energy=pre_profinet_name+"latch_energy"
+Topic_latch_ACF=pre_profinet_name+"ASDASDD"
+Topic_latch_ACB=pre_profinet_name+"FNGSGHG"
+#########################################################
+Topic_LED_edge_AF=pre_profinet_name+"DSADASA"
+Topic_LED_edge_AB=pre_profinet_name+"LED_1_edgeAB"
+Topic_LED_edge_BF=pre_profinet_name+"LED_1_edgeBF"
+Topic_LED_edge_BB=pre_profinet_name+"LED_1_edgeBB"
+Topic_LED_network=pre_profinet_name+"LED_1_network"
+Topic_LED_energy=pre_profinet_name+"LED_1_energy"
+Topic_LED_ACF=pre_profinet_name+"LED_1_ACF"
+Topic_LED_ACB=pre_profinet_name+"LED_1_ACB"
+
+
+Topic57=pre_profinet_name+"AC_sensor1"
+Topic58=pre_profinet_name+"AC_sensor2"
 
 topics = [Topic_door_sensor_edge_AF, Topic_door_sensor_edge_AB, Topic_door_sensor_edge_BF, Topic_door_sensor_edge_BB, Topic_door_sensor_network, \
     Topic_door_sensor_energy, Topic_door_sensor_ACF, Topic_door_sensor_ACB, Topic_latch_sensor_edge_AF, Topic_latch_sensor_edge_AB, Topic_latch_sensor_edge_BF,\
         Topic_latch_sensor_edge_BB, Topic_latch_sensor_network, Topic_latch_sensor_energy, Topic_latch_sensor_ACF, Topic_latch_sensor_ACB, Topic_LED_edge_AF,\
-            Topic_LED_edge_AB,Topic_LED_edge_BF, Topic_LED_edge_BB, Topic_LED_network, Topic_LED_energy, Topic_LED_ACF,Topic_LED_ACB, Topic_ACM1,Topic_ACM2,\
-                Topic_door_button_edge_AF, Topic_door_button_edge_AB, Topic_door_button_edge_BF, Topic_door_button_edge_BB,Topic_door_button_ACF,\
-                    Topic_door_button_ACB, Topic_door_button_network, Topic_door_button_energy]
+            Topic_LED_edge_AB,Topic_LED_edge_BF, Topic_LED_edge_BB, Topic_LED_network, Topic_LED_energy, Topic_LED_ACF,Topic_LED_ACB,\
+                Topic57,Topic58,Topic_latch_edge_AF,Topic_latch_edge_AB,Topic_latch_edge_BF,Topic_latch_edge_BB,Topic_latch_network,Topic_latch_energy,Topic_latch_ACF,Topic_latch_ACB]
 
-topics_latch = [Topic_latch_edge_AF,Topic_latch_edge_AB,Topic_latch_edge_BF,Topic_latch_edge_BB,Topic_latch_network,Topic_latch_energy,Topic_latch_ACF,Topic_latch_ACB]
 #################################################################################
 
-topics_interval = [Topic_LDH_edgeA1, Topic_LDH_edgeA2, Topic_LDH_edgeA3, Topic_LDH_edgeB1, Topic_LDH_edgeB2, Topic_LDH_edgeB3, Topic_LDH_network, Topic_LDH_energy,Topic_EM1,Topic_EM2]
+topics_interval = [Topic_LDH_edgeA1, Topic_LDH_edgeA2, Topic_LDH_edgeA3, Topic_LDH_edgeB1, Topic_LDH_edgeB2, Topic_LDH_edgeB3, Topic_LDH_network, Topic_LDH_energy]
 threads = []
 
-for topic in topics_interval:
-    t = threading.Thread(target=mqtt_client_thread, args=(topic,))
-    t.start()
-    threads.append(t)
+messages_interval = []
+timer_running = False
+
+def process_messages_interval():
+    global messages_interval, timer_running
+    # Process all messages together
+    payloads = [json_convert_dido(msg) for msg in messages_interval]
+    combined_payload = json.dumps(payloads)  # Combine into one JSON object
+    print("##########################################")
+    print(combined_payload)
+    print(type(combined_payload))
+    python_data = json.loads(combined_payload)
+    print(python_data)
+    print(type(python_data))
+    send_to_django_server_dido(combined_payload)  # Send to Django server
+    messages_interval = []  # Reset the list
+    timer_running = False
 
 
 def on_connect(client, userdata, flags, rc):
@@ -252,32 +250,31 @@ def on_connect(client, userdata, flags, rc):
 
     for topic in topics:
         client.subscribe(topic)
-    for topic in topics_latch:
-        client.subscribe(topic)
-
 
 
 def on_message(client, userdata, msg):
+    global timer_running ,messages_interval
     print(f"Main Message:msg",msg)
-    if msg.topic in topics:
-        print("topic is",msg.topic)
-        print("message received")
+    if msg.topic in topics_interval:
         payload=json_convert_dido(msg)
         if payload !="F":
             threading.Thread(target=send_to_django_server_dido, args=(payload,)).start()
         else:
             print("fault")
             pass
-
-
-    elif msg.topic in topics_latch:
-        print("topic is",msg.topic)
-        payload=json_convert_dido(msg)
-        if payload !="F":
-            threading.Thread(target=send_to_django_server_dido, args=(payload,)).start()
-        else:
-            print("fault")
-            pass
+    elif msg.topic in [Topic_EM1,Topic_EM2]:
+            payload=json_convert_energy(msg)
+            if payload !="F":
+                threading.Thread(target=send_to_django_server_dido, args=(payload,)).start()
+            else:
+                pass
+            
+    elif msg.topic in topics:
+        messages_interval.append(msg)
+        if not timer_running:
+            timer_running = True
+            # Start a timer for 30 seconds
+            threading.Timer(5, process_messages_interval).start()
     else:
         print("Fault")
 
